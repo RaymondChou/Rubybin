@@ -1,12 +1,15 @@
-require 'rubygems'
-require 'bundler'
-
-Bundler.require
+require './lib/exec'
+require 'sinatra'
 
 class App < Sinatra::Base
-  register Sinatra::Synchrony
+
+  configure do
+    set :server, :puma
+  end
+
   get '/' do
-    'Hello World!'
+    e = Exec.new.execute(params[:code])
+    e.result.to_s
   end
 end
 

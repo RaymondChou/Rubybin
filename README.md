@@ -5,4 +5,4 @@ Rubybin.com
 
 export JRUBY_OPTS="-Xcext.enabled=true"
 
-rackup -s thin
+rackup
